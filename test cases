@@ -52,11 +52,12 @@ WebDriver driver;
 	driver.findElement(By.xpath("//input[@type='submit']")).click(); 
 	driver.findElement(By.xpath("//a[text()='New repository']")).click(); 
 	driver.findElement(By.id("repository_name")).sendKeys("tatoc"); 
-//	String a=driver.findElement(By.id("repository_name")).getAttribute("class");
-//	if(a.equals(b)) {
-//		System.out.println("true");
-//	}
-//		
+	WebDriverWait wait=new WebDriverWait(driver,10);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".is-autocheck-successful")));
+        String a=driver.findElement(By.id("repository_name")).getAttribute("class");
+        System.out.println(a);  
+        Assert.assertEquals(a,"form-control js-repo-name short is-autocheck-successful");
+        System.out.println("true");
 		
 		
 		
